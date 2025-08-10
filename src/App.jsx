@@ -58,7 +58,7 @@ export default function App(){
     ['Average travel cost / change',s.averageTravelCostPerChange],['Late/change/cancel % (today)',s.latePctToday],['Late/change/cancel % (with Tilla)',lateWithTilla.toFixed(3)],
     ['Breaches / year (today)',s.breachesPerYear],['Compliance reduction (backend)',compReduction],['Turnover rate',s.turnover],['Cost per replacement',s.costPerReplacement],['Turnover reduction (backend)',turnoverReduction],
     ['Annual crew changes',Math.round(annualCrewChanges)],['Admin savings',Math.round(adminSavings)],['Travel savings',Math.round(travelSavings)],['Compliance savings',Math.round(complianceSavings)],['Turnover savings',Math.round(turnoverSavings)],
-    ['Software replaced',Math.round(s.softwareReplaced)],['Tilla subscription',Math.round(s.tillaCost)],['Total gross savings',Math.round(totalGross)],['Net savings',Math.round(netSavings)],['ROI (Net/Tilla)',roi],['Payback (months)',paybackMonths or 'N/A']]
+    ['Software replaced',Math.round(s.softwareReplaced)],['Tilla subscription',Math.round(s.tillaCost)],['Total gross savings',Math.round(totalGross)],['Net savings',Math.round(netSavings)],['ROI (Net/Tilla)',roi],['Payback (months)', paybackMonths ?? 'N/A']
     const csv=rows.map(r=>r.map(x=>typeof x==='string'? '"'+x.replace(/"/g,'""')+'"':x).join(',')).join('\n')
     const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='tilla-roi-summary.csv'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url) }
 
